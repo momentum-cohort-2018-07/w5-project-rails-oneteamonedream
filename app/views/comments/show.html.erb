@@ -1,22 +1,10 @@
-# displays post message
+
 <p>
-  <strong>Post:</strong>
-  <%= @post.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @post.text %>
+  <strong>Comment:</strong>
+  <%= @comment.body %>
 </p>
  
 <h2>Comments</h2>
-#comment partial to show all comments for the post
-<%= render @post.comments %>
-# <% @post.comments.each do |comment| %>
 
-#comment form 
-<h2>Add a Comment:</h2>
-<%= render 'comments/form' %>
- 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', post_path %>
+<%= link_to 'Edit', edit_comment_path %>
+<%= link_to 'Back', root_path %>
