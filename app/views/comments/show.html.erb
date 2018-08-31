@@ -1,0 +1,42 @@
+# displays post message
+<p>
+  <strong>Post:</strong>
+  <%= @post.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @post.text %>
+</p>
+ 
+<h2>Comments</h2>
+<% @post.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+ 
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %>
+
+#comment form 
+<h2>Add a Comment:</h2>
+<%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :Commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+ 
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', post_path %>
