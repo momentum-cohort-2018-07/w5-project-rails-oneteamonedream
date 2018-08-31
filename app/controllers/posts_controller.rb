@@ -45,8 +45,8 @@ class PostsController < ApplicationController
  
   
 
-  private
-    def post_params
-       params.require(:post).permit(:title, body, :user_id, :vote)
-    end
+  # private
+  #   def post_params
+  #      params.require(:post).permit(:title, body, :user_id, :vote)
+  #   end
 end
