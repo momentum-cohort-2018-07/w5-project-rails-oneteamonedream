@@ -1,5 +1,7 @@
 <%= form_with(model: comment, local: true) do |form| %>
+  <%= form.hidden_field :user_id, :value=>@current_user.id %>
 
+  
   <p>
     <%= form.label :Comment %><br>
     <%= form.text_area :body %>
