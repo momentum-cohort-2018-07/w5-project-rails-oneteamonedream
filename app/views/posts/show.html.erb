@@ -11,7 +11,7 @@
 #Need to show user/author
 #Need to show vote value
 #Need to allow creation of Comment
-
+<%= link_to 'Add a comment', new_comment_path(post_id: @post.id) %>
 <%= link_to 'Edit', edit_post_path(@post) %> 
 <%= link_to 'Back', posts_path %>
 

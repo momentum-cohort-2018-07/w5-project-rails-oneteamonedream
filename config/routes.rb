@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
 
 
-  root 'comments#new'
+  root 'users#index'
   resources :comments
 
 

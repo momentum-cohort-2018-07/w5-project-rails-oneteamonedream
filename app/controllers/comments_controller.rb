@@ -1,14 +1,18 @@
 class CommentsController < ApplicationController
   def new
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    @comment = Comment.new
+    @post = Post.find(params[:post_id])
+        if current_user
+            @comment = Comment.new
+        else
+            redirect_to post_path(@post), alert: "You must be logged in to comment."
+        end
   end
   
   def create
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      redirect_to @comment
+      redirect_to post_path(@comment.post_id)
     else
       render 'new'
     end
@@ -39,6 +43,6 @@ class CommentsController < ApplicationController
  
   private
     def comment_params
-      params.require(:comment).permit(:commenter, :body)
+      params.require(:comment).permit(:post_id, :body, :user_id)
     end
 end

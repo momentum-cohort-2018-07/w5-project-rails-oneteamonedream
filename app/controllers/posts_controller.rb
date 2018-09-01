@@ -9,7 +9,11 @@ class PostsController < ApplicationController
   end
  
   def new
-    @post = Post.new
+    if current_user
+      @post = Post.new
+    else
+      redirect_to new_login_path, alert: "Please log in first."
+    end
   end
 
   def edit
@@ -47,6 +51,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-       params.require(:post).permit(:title, body, :user_id, :vote)
+       params.require(:post).permit(:title, :body, :user_id, :vote)
     end
 end

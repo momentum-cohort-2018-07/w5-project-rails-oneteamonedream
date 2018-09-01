@@ -1,12 +1,13 @@
-<%= form_with(model: comment, local: true) do |form| %>
-  <%= form.hidden_field :user_id, :value=>@current_user.id %>
+<%= form_for(@comment) do |form| %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :post_id, value: @post.id %>
+  <div>
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+  </div>
 
-  
-  <p>
-    <%= form.label :Comment %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+<p>
+  <%= form.submit %>
+</p>
+
 <% end %>
