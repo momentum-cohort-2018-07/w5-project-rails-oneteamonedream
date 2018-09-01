@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+   background-image: url(turf.jpeg);
+   background-repeat: repeat; 
+ }
+
+ .button {
+  background-color: brown; 
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  text-align: center;
+  margin: 10px;
+  display: inline-block;
+  font-size: small
+ }
