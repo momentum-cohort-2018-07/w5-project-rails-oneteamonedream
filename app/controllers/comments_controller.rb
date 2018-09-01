@@ -1,13 +1,18 @@
 class CommentsController < ApplicationController
   def new
-    @comment = Comment.new
+    @post = Post.find(params[:post_id])
+        if current_user
+            @comment = Comment.new
+        else
+            redirect_to post_path(@post), alert: "You must be logged in to comment."
+        end
   end
   
   def create
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      redirect_to @comment
+      redirect_to post_path(@comment.post_id)
     else
       render 'new'
     end
@@ -15,6 +20,11 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
+    if current_user.id == @comment.user_id
+      @post = Post.find(params[:post_id])
+    else
+      redirect_to post_path(@comment.post_id), alert: 'Only comment creator can edit.'
+    end
   end
 
   def update
@@ -32,12 +42,17 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to root_path
+    @id = @comment.post_id
+    if current_user.id == @comment.user_id
+        @comment.destroy
+        redirect_to post_path(@id)
+    else
+        redirect_to post_path(@id), alert: 'Only comment creator can delete.'
+    end
   end
  
   private
     def comment_params
-      params.require(:comment).permit(:commenter, :body)
+      params.require(:comment).permit(:post_id, :body, :user_id)
     end
 end
