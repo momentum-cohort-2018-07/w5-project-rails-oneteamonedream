@@ -5,12 +5,16 @@ Rails.application.routes.draw do
 
 
 
-  root 'users#index'
+  root 'posts#index'
   resources :comments
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :posts
+  resources :posts do
+    member do
+      put "like" => "posts#vote"
+    end
+  end
 
 end

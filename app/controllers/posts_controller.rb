@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  
 
   def index
     @posts = Post.all
@@ -37,6 +38,22 @@ class PostsController < ApplicationController
       redirect_to @post
     else
       render 'edit'
+    end
+  end
+  
+  def vote
+    @post = Post.find(params[:id])  
+    respond_to :js, :html
+    if current_user   
+      if !current_user.liked? @post
+        @post.liked_by current_user
+        redirect_to @post
+      elsif current_user.liked? @post
+        @post.unliked_by current_user
+        redirect_to @post
+       end
+    else
+      redirect_to new_login_path, alert: "Please log in first."
     end
   end
 

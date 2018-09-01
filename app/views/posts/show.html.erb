@@ -7,7 +7,19 @@
   <strong>Body:</strong>
   <%= @post.body %>
 </p>
-
+<%= link_to like_post_path(@post), class: "like-btn", method: :put, remote: :true do %> 
+<div>
+  <span><p>👍</p></span>
+</div> 
+<span class="likes-count"><%= @post.get_upvotes.size %></span>
+<% end %>
+<% @post.comments.each do |comment| %>
+<p>
+  <strong></strong>
+  <%= comment.body %>
+</p>
+<% end %>
+<h2>Comments</h2>
 #Need to show user/author
 #Need to show vote value
 #Need to allow creation of Comment
