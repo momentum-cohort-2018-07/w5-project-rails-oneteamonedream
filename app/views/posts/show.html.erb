@@ -13,16 +13,15 @@
 </div> 
 <span class="likes-count"><%= @post.get_upvotes.size %></span>
 <% end %>
+<h2>Comments</h2>
 <% @post.comments.each do |comment| %>
 <p>
   <strong></strong>
   <%= comment.body %>
 </p>
 <% end %>
-<h2>Comments</h2>
-#Need to show user/author
-#Need to show vote value
-#Need to allow creation of Comment
+
+
 <%= link_to 'Add a comment', new_comment_path(post_id: @post.id) %>
 <%= link_to 'Edit', edit_post_path(@post) %> 
 <%= link_to 'Back', posts_path %>
