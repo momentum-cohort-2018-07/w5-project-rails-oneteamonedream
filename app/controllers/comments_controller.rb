@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
         if current_user
             @comment = Comment.new
         else
-            redirect_to post_path(@post), alert: "You must be logged in to comment."
+            flash[:notice] ="You must be logged in to comment."
+            redirect_to new_session_path
         end
   end
   
@@ -42,10 +43,6 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-<<<<<<< HEAD
-    @comment.destroy
-    redirect_to 'posts#index'
-=======
     @id = @comment.post_id
     if current_user.id == @comment.user_id
         @comment.destroy
@@ -53,7 +50,6 @@ class CommentsController < ApplicationController
     else
         redirect_to post_path(@id), alert: 'Only comment creator can delete.'
     end
->>>>>>> development
   end
  
   private
