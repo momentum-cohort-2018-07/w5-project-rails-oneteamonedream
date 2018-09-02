@@ -15,9 +15,22 @@
  */
 
  body {
+   max-width: 600px;
+   margin: 0px auto;
    background-image: url(turf.jpeg);
    background-repeat: repeat; 
  }
+.login {
+  text-align: right;
+  padding: 5px 2px;
+  border: 2px solid black;
+}
+
+.header {
+  background-color: #97A7B3;
+  text-align: center;
+  padding: 5px 2px;
+}
 
  .button {
   background-color: brown; 
@@ -25,7 +38,7 @@
   border-radius: 10px;
   text-decoration: none;
   text-align: center;
-  margin: 10px;
+  padding: 5px 10px;
   display: inline-block;
   font-size: small
  }
