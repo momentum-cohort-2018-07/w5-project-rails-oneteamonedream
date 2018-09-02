@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @posts = @posts.sort_by(&:cached_votes_total).reverse
   end
 
   def show
@@ -13,7 +14,8 @@ class PostsController < ApplicationController
     if current_user
       @post = Post.new
     else
-      redirect_to new_login_path, alert: "Please log in first."
+      flash[:notice] ="You must be logged to make a new post."
+      redirect_to new_session_path
     end
   end
 
@@ -23,10 +25,12 @@ class PostsController < ApplicationController
       if current_user.id == @post.user_id
           @post = Post.find(params[:id])
       else
-          redirect_to @post, notice: 'Only post creator can edit.'
+          flash[:notice] = 'Only post creator can edit.'
+          redirect_to @post 
       end
     else
-      redirect_to new_login_path, alert: "Please log in first."
+      flash[:notice] ="You must be logged to edit a post."
+      redirect_to new_session_path
   end
   end
 
@@ -62,7 +66,8 @@ class PostsController < ApplicationController
         redirect_to @post
        end
     else
-      redirect_to new_login_path, alert: "Please log in first."
+      flash[:notice] = 'Only users can vote, Please login'
+      redirect_to @post
     end
   end
 
@@ -72,7 +77,8 @@ class PostsController < ApplicationController
       @post.destroy
       redirect_to posts_path
     else
-      redirect_to @post, alert: 'Only post creator can delete.'
+      flash[:notice] = 'Only post creator can delete.'
+      redirect_to @post
     end
   end
  
