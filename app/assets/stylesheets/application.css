@@ -15,7 +15,7 @@
  */
 
  body {
-   max-width: 600px;
+   max-width: 1000px;
    margin: 0px auto;
    background-image: url(turf.jpeg);
    background-repeat: repeat; 
@@ -32,7 +32,7 @@
   text-align: center;
   padding: 3px 2px;
   color: #003300;
-  border-bottom: 1px solid #003300;
+  border-bottom: 2px solid #003300;
 }
 
  .button {
@@ -53,3 +53,16 @@
  .football {
    float: right;
  }
+
+ .table {
+   width: 100%;
+   text-align: center;
+   vertical-align: middle;
+   padding: 10px;
+   empty-cells: hide;
+ }
+
+ th, td {
+  border-bottom: 1px solid #663300;
+ }
+
