@@ -31,7 +31,7 @@
  
   <% @posts.each do |post| %>
     <tr>
-      <td><%= post.cached_votes_total %></td>
+      <td><%= post.get_upvotes.size %></td>
       <td><%= post.title %></td>
       <td><%= post.body %></td>
       <td><%= link_to 'Show', post_path(post), class: "button" %></td>
