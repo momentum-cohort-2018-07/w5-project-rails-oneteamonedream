@@ -21,14 +21,13 @@
    background-repeat: repeat; 
    color: #003300;
  }
+
 .login {
   text-align: right;
   padding: 5px 2px;
-  #border: 2px solid#003300;
 }
 
 .header {
-  #background-color: #97A7B3;
   text-align: center;
   padding: 3px 2px;
   color: #003300;
@@ -47,11 +46,11 @@
  }
 
  img {
-  width: 25%;
- }
+  width: 150px;
+  display: flex-box;
+  padding: 0em 0em 20px 0em;
+  float: left;
 
- .football {
-   float: right;
  }
 
  .table {

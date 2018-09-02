@@ -12,14 +12,15 @@
 <%= link_to "Sign Up", new_user_path, class: "button" %> 
 <%= link_to "Login", new_session_path, class: "button" %>
 <% end %>
-</div>
-<div>
-<h1>GAMEDAY</h1>
-  <p><strong>All Talk All Sports</strong></p>
+  </div>
+    <%= image_tag ("football.png")  %>
+  <div>
+<h1>GAMEDAY</h1>   
+<h2><strong>All Talk All Sports</strong></h2>
+   
 </div>
 </header>
 
-<div class="football"><%= image_tag ("football.png") ; %> </div>
 <h2>Listing Posts</h2>
 <%= link_to 'New Post', new_post_path, class: "button" %>
 <table class="table">
