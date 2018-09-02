@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @posts = @posts.sort_by(&:cached_votes_total).reverse
   end
 
   def show
