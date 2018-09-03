@@ -15,24 +15,23 @@
  */
 
  body {
-   max-width: 600px;
+   max-width: 1000px;
    margin: 0px auto;
    background-image: url(turf.jpeg);
    background-repeat: repeat; 
    color: #003300;
  }
+
 .login {
   text-align: right;
   padding: 5px 2px;
-  #border: 2px solid#003300;
 }
 
 .header {
-  #background-color: #97A7B3;
   text-align: center;
   padding: 3px 2px;
   color: #003300;
-  border-bottom: 1px solid #003300;
+  border-bottom: 2px solid #003300;
 }
 
  .button {
@@ -47,9 +46,22 @@
  }
 
  img {
-  width: 25%;
+  width: 150px;
+  display: flex-box;
+  padding: 0em 0em 20px 0em;
+  float: left;
+
  }
 
- .football {
-   float: right;
+ .table {
+   width: 100%;
+   text-align: center;
+   vertical-align: middle;
+   padding: 10px;
+   empty-cells: hide;
  }
+
+ th, td {
+  border-bottom: 1px solid #663300;
+ }
+

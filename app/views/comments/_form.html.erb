@@ -2,7 +2,7 @@
   <%= form.hidden_field :user_id, value: current_user.id %>
   <%= form.hidden_field :post_id, value: @post.id %>
   <div>
-      <%= form.label :body %><br>
+      <strong><%= form.label :Body %></strong><br>
       <%= form.text_area :body %>
   </div>
 
