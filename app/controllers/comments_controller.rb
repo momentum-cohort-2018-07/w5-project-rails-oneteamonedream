@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     if @comment.save
-      redirect_to post_path(@comment.post_id)
+      redirect_to post_path(@comment.post.id)
     else
       render 'new'
     end

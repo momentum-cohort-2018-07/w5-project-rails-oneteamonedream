@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to new_session_path, notice: "Your username was created successfully. Please login."
     else
-      redirect_to 'new'
+      render 'new'
     end
   end
 
