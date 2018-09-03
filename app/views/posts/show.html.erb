@@ -25,17 +25,17 @@
     <strong><%= @post.title %></strong>
   </p>
   
-  <p class="post-body">
-    <%= @post.body %>
-  </p>
+  <div class="post-body">
+    <p><%= @post.body %></p>
+  
     <p class="created">created by: <%= @post.user.username %><br>
     created on: <%= @post.created_at.to_formatted_s(:long_ordinal) %>
-  </p>
-  <%= link_to like_post_path(@post), class: "like-btn", method: :put, remote: :true do %> 
-      <span>👍 </span>
-  <% end %>
+    </p>
+    <%= link_to like_post_path(@post), class: "like-btn", method: :put, remote: :true do %> 
+        <span>👍 </span>
+    <% end %>
   <span class="likes-count"><%= @post.get_upvotes.size %> likes</span>
-
+  </div>
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
   <div class="comments">
@@ -48,9 +48,10 @@
   </div>
   <% end %>
 </div>
-
+<div class="show-links">
 <%= link_to 'Add a comment', new_comment_path(post_id: @post.id), class: "button" %>
 <%= link_to 'Edit', edit_post_path(@post), class: "button" %> 
 <%= link_to 'Back', posts_path, class: "button" %>
+</div>
 
  

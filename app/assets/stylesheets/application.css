@@ -90,19 +90,21 @@ a:hover{
  .post-title {
    margin: 0;
    font-size: 2rem;
-   border-bottom: 1px solid #003300;
+   padding-bottom: 10px;
  }
 
  .post-body {
-  font-size: 1.25rem;
-  border-bottom: 1px solid #003300;
+  margin: 5px 0;
+  border: 2px solid #003300;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .container {
   background-color: rgba(192,192,192,.5);	
   margin: 5px 0;
   border: 1px solid #003300;
-  border-radius: 3px;
+  border-radius: 10px;
   padding: 10px;
 }
 
@@ -111,8 +113,17 @@ a:hover{
   font-size: .75rem;
   font-style: italic;
   color: dimgrey;
+  
 }
 
 .comments {
-  border-bottom: 1px solid #003300
+  margin: 5px 0;
+  border: 2px solid #003300;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.show-links {
+  margin: 10px 0 20px 0;
+
 }
