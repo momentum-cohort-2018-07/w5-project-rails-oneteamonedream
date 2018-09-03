@@ -125,5 +125,8 @@ a:hover{
 
 .show-links {
   margin: 10px 0 20px 0;
+}
 
+.flash-error {
+  color: rgb(21, 0, 211);
 }
