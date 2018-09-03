@@ -1,22 +1,22 @@
 
 <header class="header">
-<% if flash[:notice] %>
-<p><%= flash[:notice] %></p>
-<% end %>
-<div class="login">
-<% if current_user %>
-  <%= link_to 'Log Out', session_path, method: :delete, class: "button" %>
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
+  <div class="login">
+    <% if current_user %>
+      <%= link_to 'Log Out', session_path, method: :delete, class: "button" %>
 
-<% end %>
-<% if !current_user %>
-<%= link_to "Sign Up", new_user_path, class: "button" %> 
-<%= link_to "Login", new_session_path, class: "button" %>
-<% end %>
-</div>
-<div>
-<h1>GAMEDAY</h1>
-  <p>All Talk All Sports</p>
-</div>
+    <% end %>
+  <% if !current_user %>
+    <%= link_to "Sign Up", new_user_path, class: "button" %> 
+    <%= link_to "Login", new_session_path, class: "button" %>
+  <% end %>
+  </div>
+  <div>
+    <h1>GAMEDAY</h1>
+      <p>All Talk All Sports</p>
+  </div>
 </header>
 
 <div class="football"><%= image_tag ("football.png") ; %> </div>
@@ -27,14 +27,16 @@
     <th>Vote</th>
     <th>Title</th>
     <th>Body</th>
+    <th>User</th>
     <th colspan="3"></th>
   </tr>
  
   <% @posts.each do |post| %>
     <tr>
-      <td><%= post.get_upvotes.size %></td>
+      <td><%= post.cached_votes_total %></td>
       <td><%= post.title %></td>
       <td><%= post.body %></td>
+      <td><%= post.created_at.to_formatted_s(:long_ordinal) %></td>
       <td><%= link_to 'Show', post_path(post), class: "button" %></td>
       <% if current_user %>
       <td><%= link_to 'Edit', edit_post_path(post), class: "button" %></td>
