@@ -1,7 +1,7 @@
 <%= form_for(@comment) do |form| %>
 <header class="header">
     <% if flash[:notice] %>
-      <p><%= flash[:notice] %></p>
+      <p class="flash-error"><%= flash[:notice] %></p>
     <% end %>
   <div class="login">
   <% if current_user %>
@@ -20,15 +20,11 @@
 </header>
 <h1>Enter Comment</h1>
 <%= form_with model: @comment, local: true do |form| %>
-
-  <%= form.hidden_field :user_id, value: current_user.id %>
-  <%= form.hidden_field :post_id, value: @post.id %>
-  
-  
   <div>
       <%= form.text_area :body, class:'comment-area' %>
   </div>
-
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :post_id, value: @post.id %>
 <p>
   <%= form.submit "Submit", class:"button" %>
 </p>
