@@ -1,32 +1,57 @@
-<% if flash[:notice] %>
-<p><%= flash[:notice] %></p>
-<% end %>
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
- 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
-<%= link_to like_post_path(@post), class: "like-btn", method: :put, remote: :true do %> 
-<div>
-  <span><p>👍</p></span>
-</div> 
-<span class="likes-count"><%= @post.get_upvotes.size %></span>
-<% end %>
+
+<header class="header">
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
+  <div class="login">
+    <% if current_user %>
+      <%= link_to 'Log Out', session_path, method: :delete, class: "button" %>
+    <% end %>
+    <% if !current_user %>
+     <%= link_to "Sign Up", new_user_path, class: "button" %> 
+     <%= link_to "Login", new_session_path, class: "button" %>
+    <% end %>
+  </div>
+  <div>
+    <h1>GAMEDAY</h1>
+      <p>All Talk All Sports</p>
+  </div>
+</header>
+  <% if flash[:notice] %>
+    <p><%= flash[:notice] %></p>
+  <% end %>
+<div class="container">
+  <p class="post-title">
+    <strong><%= @post.title %></strong>
+  </p>
+  
+  <div class="post-body">
+    <p><%= @post.body %></p>
+  
+    <p class="created">created by: <%= @post.user.username %><br>
+    created on: <%= @post.created_at.to_formatted_s(:long_ordinal) %>
+    </p>
+    <%= link_to like_post_path(@post), class: "like-btn", method: :put, remote: :true do %> 
+        <span>👍 </span>
+    <% end %>
+  <span class="likes-count"><%= @post.get_upvotes.size %> likes</span>
+  </div>
 <h2>Comments</h2>
 <% @post.comments.each do |comment| %>
-<p>
-  <strong></strong>
-  <%= comment.body %>
-</p>
-<% end %>
-
-
-<%= link_to 'Add a comment', new_comment_path(post_id: @post.id) %>
-<%= link_to 'Edit', edit_post_path(@post) %> 
-<%= link_to 'Back', posts_path %>
+  <div class="comments">
+    <p>
+      <strong></strong>
+      <%= comment.body %>
+    </p>
+    <div class="created">comment by: <%= comment.user.username %></div>
+    <div class="created">comment on: <%= comment.created_at.to_formatted_s(:long_ordinal) %></div>
+  </div>
+  <% end %>
+</div>
+<div class="show-links">
+<%= link_to 'Add a comment', new_comment_path(post_id: @post.id), class: "button" %>
+<%= link_to 'Edit', edit_post_path(@post), class: "button" %> 
+<%= link_to 'Back', posts_path, class: "button" %>
+</div>
 
  
