@@ -15,7 +15,8 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to post_path(@comment.post.id)
     else
-      render 'new'
+      redirect_to post_path(@comment.post.id)
+      flash[:comment] ="Comment can't be blank."
     end
   end
 

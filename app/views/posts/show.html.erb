@@ -1,8 +1,5 @@
 
 <header class="header">
-  <% if flash[:notice] %>
-    <p><%= flash[:notice] %></p>
-  <% end %>
   <div class="login">
     <% if current_user %>
       <%= link_to 'Log Out', session_path, method: :delete, class: "button" %>
@@ -18,8 +15,11 @@
   </div>
 </header>
   <% if flash[:notice] %>
-    <p><%= flash[:notice] %></p>
+    <p class="flash-error"><%= flash[:notice] %></p>
   <% end %>
+  <% if flash[:comment] %>
+<p class="flash-error"><%= flash[:comment] %></p>
+<% end %>
 <div class="container">
   <p class="post-title">
     <strong><%= @post.title %></strong>
