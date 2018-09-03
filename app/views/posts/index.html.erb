@@ -7,27 +7,29 @@
     <% if current_user %>
       <%= link_to 'Log Out', session_path, method: :delete, class: "button" %>
 
-    <% end %>
-  <% if !current_user %>
-    <%= link_to "Sign Up", new_user_path, class: "button" %> 
-    <%= link_to "Login", new_session_path, class: "button" %>
-  <% end %>
+<% end %>
+<% if !current_user %>
+<%= link_to "Sign Up", new_user_path, class: "button" %> 
+<%= link_to "Login", new_session_path, class: "button" %>
+<% end %>
   </div>
+    <%= image_tag ("football.png")  %>
   <div>
-    <h1>GAMEDAY</h1>
-      <p>All Talk All Sports</p>
-  </div>
+<h1>GAMEDAY</h1>   
+<h2><strong>All Talk All Sports</strong></h2>
+   
+</div>
 </header>
 
-<div class="football"><%= image_tag ("football.png") ; %> </div>
 <h2>Listing Posts</h2>
 <%= link_to 'New Post', new_post_path, class: "button" %>
-<table>
+<table class="table">
   <tr>
     <th>Vote</th>
     <th>Title</th>
     <th>Body</th>
     <th>User</th>
+    <th>Actions</th>
     <th colspan="3"></th>
   </tr>
  
